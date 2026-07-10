@@ -3,8 +3,10 @@ import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
 import Home from "./pages/Home";
 import Login from "./pages/Login";
 
+const API_URL = import.meta.env.VITE_API;
+
 async function logoutUser() {
-	await fetch("http://localhost:4000/api/logout", {
+	await fetch(`${API_URL}logout`, {
 		method: "POST",
 		credentials: "include",
 	});
