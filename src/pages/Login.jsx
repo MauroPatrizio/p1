@@ -45,7 +45,6 @@ function Login({ onLogin }) {
 			}}
 		>
 			<h2>Iniciar sesión</h2>
-			<p>Usa el usuario mauro@test.com y la contraseña 123456.</p>
 			<form
 				onSubmit={handleSubmit}
 				style={{ display: "flex", flexDirection: "column", gap: "1rem" }}
