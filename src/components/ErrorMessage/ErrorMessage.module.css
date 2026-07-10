@@ -1,0 +1,31 @@
+.errorContainer {
+	text-align: center;
+	padding: 40px 20px;
+	background: #fff3f3;
+	border-radius: 10px;
+	border: 1px solid #ff6b6b;
+	margin: 20px 0;
+}
+
+.errorIcon {
+	font-size: 48px;
+	margin-bottom: 15px;
+}
+
+.errorTitle {
+	color: #d63031;
+	margin-bottom: 10px;
+	font-size: 22px;
+}
+
+.errorMessage {
+	color: #c0392b;
+	font-size: 16px;
+	margin: 10px 0;
+}
+
+.errorHint {
+	color: #666;
+	margin-top: 15px;
+	font-size: 14px;
+}
