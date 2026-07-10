@@ -9,6 +9,6 @@ router.get("/", (req, res) => {
 });
 
 router.get("/api/health", healthController);
-router.post("/api/login", loginController);
+router.post("/api/login1", loginController);
 
 export default router;

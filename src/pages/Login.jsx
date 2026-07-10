@@ -1,6 +1,8 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
+const API_URL_BACK = import.meta.env.VITE_API_URL;
+console.log("la url es:", API_URL_BACK);
 function Login({ onLogin }) {
 	const [email, setEmail] = useState("");
 	const [password, setPassword] = useState("");
@@ -12,7 +14,7 @@ function Login({ onLogin }) {
 		setError("");
 
 		try {
-			const response = await fetch("http://localhost:4000/api/login", {
+			const response = await fetch(`${API_URL_BACK}login1`, {
 				method: "POST",
 				headers: {
 					"Content-Type": "application/json",
