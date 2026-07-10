@@ -36,6 +36,15 @@ export async function ensureDatabaseAndTable() {
 				update_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 			)
 		`);
+		await connection.query(`
+			CREATE TABLE IF NOT EXISTS products (
+				id INT AUTO_INCREMENT PRIMARY KEY,
+				name VARCHAR(255) NOT NULL,
+				price DECIMAL(10, 2) NOT NULL,
+				create_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+				update_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+			)
+		`);
 	} finally {
 		await connection.end();
 	}
