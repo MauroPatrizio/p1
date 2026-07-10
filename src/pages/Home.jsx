@@ -4,7 +4,7 @@ import Spinner from "../components/Spinner/Spinner";
 import ErrorMessage from "../components/ErrorMessage/ErrorMessage";
 import styles from "./Home.module.css";
 
-function Home() {
+function Home({ onLogout }) {
 	const { users, loading, error, fetchUsers } = useUsers();
 
 	return (
@@ -19,6 +19,14 @@ function Home() {
 					className={styles.button}
 				>
 					{loading ? "Cargando..." : "Cargar Usuarios"}
+				</button>
+
+				<button
+					onClick={onLogout}
+					className={styles.button}
+					style={{ marginLeft: "0.5rem" }}
+				>
+					Cerrar sesión
 				</button>
 
 				<p className={styles.counter}>Usuarios cargados: {users.length}</p>

@@ -20,6 +20,13 @@ export async function loginController(req, res) {
 			);
 
 			if (rows.length > 0) {
+				res.cookie("authToken", `user-${rows[0].id}`, {
+					httpOnly: true,
+					secure: false,
+					sameSite: "lax",
+					maxAge: 1000 * 60 * 60 * 2,
+				});
+
 				return res.json({ success: true, message: "Login correcto", user: rows[0] });
 			}
 
@@ -31,4 +38,14 @@ export async function loginController(req, res) {
 		console.error("Error al validar login:", error);
 		return res.status(500).json({ success: false, message: "Error del servidor" });
 	}
+}
+
+export function logoutController(req, res) {
+	res.clearCookie("authToken", {
+		httpOnly: true,
+		secure: false,
+		sameSite: "lax",
+	});
+
+	return res.json({ success: true, message: "Sesión cerrada" });
 }

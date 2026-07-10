@@ -1,6 +1,6 @@
 import express from "express";
 import { healthController } from "../controllers/healthController.js";
-import { loginController } from "../controllers/authController.js";
+import { loginController, logoutController } from "../controllers/authController.js";
 
 const router = express.Router();
 
@@ -9,6 +9,7 @@ router.get("/", (req, res) => {
 });
 
 router.get("/api/health", healthController);
-router.post("/api/login1", loginController);
+router.post("/api/login", loginController);
+router.post("/api/logout", logoutController);
 
 export default router;

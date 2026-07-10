@@ -14,12 +14,13 @@ function Login({ onLogin }) {
 		setError("");
 
 		try {
-			const response = await fetch(`${API_URL_BACK}login1`, {
+			const response = await fetch(`${API_URL_BACK}login`, {
 				method: "POST",
 				headers: {
 					"Content-Type": "application/json",
 				},
 				body: JSON.stringify({ email, password }),
+				credentials: "include",
 			});
 
 			const data = await response.json();
@@ -53,6 +54,7 @@ function Login({ onLogin }) {
 			>
 				<input
 					type="text"
+					autoComplete="email"
 					placeholder="Correo"
 					value={email}
 					onChange={(event) => setEmail(event.target.value)}
@@ -60,6 +62,7 @@ function Login({ onLogin }) {
 				/>
 				<input
 					type="password"
+					autoComplete="current-password"
 					placeholder="Contraseña"
 					value={password}
 					onChange={(event) => setPassword(event.target.value)}

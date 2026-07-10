@@ -3,6 +3,13 @@ import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
 import Home from "./pages/Home";
 import Login from "./pages/Login";
 
+async function logoutUser() {
+	await fetch("http://localhost:4000/api/logout", {
+		method: "POST",
+		credentials: "include",
+	});
+}
+
 function ProtectedRoute({ isAuthenticated, children }) {
 	if (!isAuthenticated) {
 		return (
@@ -19,6 +26,11 @@ function ProtectedRoute({ isAuthenticated, children }) {
 function App() {
 	const [isAuthenticated, setIsAuthenticated] = useState(false);
 
+	const handleLogout = async () => {
+		await logoutUser();
+		setIsAuthenticated(false);
+	};
+
 	return (
 		<BrowserRouter>
 			<Routes>
@@ -30,7 +42,7 @@ function App() {
 					path="/home"
 					element={
 						<ProtectedRoute isAuthenticated={isAuthenticated}>
-							<Home />
+							<Home onLogout={handleLogout} />
 						</ProtectedRoute>
 					}
 				/>
